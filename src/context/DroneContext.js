@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const DroneContext = React.createContext()
 
 export const DroneProvider = ({children}) => {
-    const dronePosts = [
-        { title: 'Test I' },
-        { title: 'Test II' },
-        { title: 'Test III' }
-    ]
+    const [dronePosts, setDronePosts] = useState([])
+    const addDronePost = _ => {
+        setDronePosts([...dronePosts], {
+            title: `drone post ${dronePosts.length + 1}`
+        })
+    }
     return (
-        <DroneContext.Provider value={dronePosts}>
+        <DroneContext.Provider value={{
+            data: dronePosts,
+            addDronePost
+        }}>
             {children}
         </DroneContext.Provider>
     )
