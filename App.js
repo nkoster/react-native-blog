@@ -2,6 +2,7 @@ import React from 'react'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import IndexScreen from './src/screens/IndexScreen'
+import { DroneProvider } from './src/context/DroneContext'
 
 const navigator = createStackNavigator({
   IndexScreen
@@ -15,5 +16,9 @@ const navigator = createStackNavigator({
 const App = createAppContainer(navigator)
 
 export default _ => {
-  return <App />
+  return (
+    <DroneProvider>
+      <App />
+    </DroneProvider>
+  )
 }
