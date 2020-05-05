@@ -4,8 +4,12 @@ const DroneContext = React.createContext()
 
 export const DroneProvider = ({children}) => {
     return (
-        <DroneContext.Provider>
+        <DroneContext.Provider value={{
+            name: 'niels'
+        }}>
             {children}
         </DroneContext.Provider>
     )
 }
+
+export default DroneContext
