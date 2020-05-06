@@ -2,7 +2,7 @@ import React from 'react'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import IndexScreen from './src/screens/IndexScreen'
-import { DroneProvider } from './src/context/DroneContext'
+import { Provider as DroneProvider } from './src/context/DroneContext'
 
 const navigator = createStackNavigator({
   IndexScreen

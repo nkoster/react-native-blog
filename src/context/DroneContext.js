@@ -1,6 +1,4 @@
-import React, { useReducer } from 'react'
-
-const DroneContext = React.createContext()
+import createDataContext from './createDataContext'
 
 const droneReducer = (state, action) => {
     switch(action.type) {
@@ -10,16 +8,13 @@ const droneReducer = (state, action) => {
             return state
     }
 }
-export const DroneProvider = ({children}) => {
-    const [dronePosts, dispatch] = useReducer(droneReducer, [])
-    const addDronePost = _ => {
-        dispatch({ type: 'add_dronepost'})
-    }
-    return (
-        <DroneContext.Provider value={{ data: dronePosts, addDronePost }}>
-            {children}
-        </DroneContext.Provider>
-    )
+
+const addDronePost = dispatch => {
+    return _ => dispatch({ type: 'add_dronepost'})
 }
 
-export default DroneContext
+export const { Context, Provider } = createDataContext(
+    droneReducer,
+    { addDronePost },
+    []
+)

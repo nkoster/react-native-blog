@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { Text, View, FlatList, Button } from 'react-native'
-import DroneContext from '../context/DroneContext'
+import { Context as DroneContext } from '../context/DroneContext'
 
 const IndexScreen = _ => {
-    const {data, addDronePost} = useContext(DroneContext)
+    const { state, addDronePost } = useContext(DroneContext)
     return (
         <View>
             <Text>Index Screen</Text>
@@ -12,7 +12,7 @@ const IndexScreen = _ => {
                 onPress={addDronePost}
             />
             <FlatList
-                data={data}
+                data={state}
                 keyExtractor={dronePost => dronePost.title}
                 renderItem={({item}) => {
                     return (
