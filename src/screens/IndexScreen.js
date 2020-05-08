@@ -18,8 +18,8 @@ const IndexScreen = _ => {
                 renderItem={({item}) => {
                     return (
                         <View style={styles.row}>
-                            <Text>{item.title}</Text>
-                            <Ionicons name="md-checkmark-circle" size={32} color="green" />
+                            <Text style={styles.title}>{item.title}</Text>
+                            <Ionicons name="ios-beer" size={24} color="brown" />
                         </View>
                     )
                 }}
@@ -31,10 +31,16 @@ const IndexScreen = _ => {
 const styles = {
     row: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        padding: 5,
+        borderBottomWidth: 1,
+        borderColor: 'silver'
     },
     icon: {
         height: 10
+    },
+    title: {
+        fontSize: 18
     }
 }
 
