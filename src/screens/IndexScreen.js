@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Text, View, FlatList, Button } from 'react-native'
 import { Context as DroneContext } from '../context/DroneContext'
+import { Ionicons } from '@expo/vector-icons'
 
 const IndexScreen = _ => {
     const { state, addDronePost } = useContext(DroneContext)
@@ -16,12 +17,25 @@ const IndexScreen = _ => {
                 keyExtractor={dronePost => dronePost.title}
                 renderItem={({item}) => {
                     return (
-                        <Text>{item.title}</Text>
+                        <View style={styles.row}>
+                            <Text>{item.title}</Text>
+                            <Ionicons name="md-checkmark-circle" size={32} color="green" />
+                        </View>
                     )
                 }}
             />
         </View>
     )
+}
+
+const styles = {
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    icon: {
+        height: 10
+    }
 }
 
 export default IndexScreen
