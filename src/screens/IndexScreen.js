@@ -3,7 +3,7 @@ import { Text, View, FlatList, Button, TouchableOpacity } from 'react-native'
 import { Context as DroneContext } from '../context/DroneContext'
 import { Ionicons } from '@expo/vector-icons'
 
-const IndexScreen = _ => {
+const IndexScreen = ({navigation}) => {
     const { state, addDronePost, delDronePost } = useContext(DroneContext)
     return (
         <View>
@@ -16,14 +16,18 @@ const IndexScreen = _ => {
                 keyExtractor={dronePost => String(dronePost.id)}
                 renderItem={({item}) => {
                     return (
-                        <View style={styles.row}>
-                            <Text style={styles.title}>{item.title} - {item.id}</Text>
-                            <TouchableOpacity
-                                onPress={_ => delDronePost(item.id)}
-                            >
-                                <Ionicons name="ios-trash" size={28} color='#666' />
-                            </TouchableOpacity>
-                        </View>
+                        <TouchableOpacity
+                            onPress={_ => navigation.navigate('ShowScreen', { id: item.id })}
+                        >
+                            <View style={styles.row}>
+                                <Text style={styles.title}>{item.title} - {item.id}</Text>
+                                <TouchableOpacity
+                                    onPress={_ => delDronePost(item.id)}
+                                >
+                                    <Ionicons name="ios-trash" size={28} color='#666' />
+                                </TouchableOpacity>
+                            </View>
+                        </TouchableOpacity>
                     )
                 }}
             />
