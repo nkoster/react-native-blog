@@ -16,7 +16,15 @@ const droneReducer = (state, action) => {
 }
 
 const addDronePost = dispatch => {
-    return (title, content) => dispatch({ type: 'add_dronepost', payload: { title, content }})
+    return async (title, content, callback) => {
+        try {
+            await console.log('slow monkey API') // this can be a slow API call
+            dispatch({ type: 'add_dronepost', payload: { title, content }})
+            callback()
+        } catch(err) {
+            console.log(err)
+        }
+    }
 }
 
 const delDronePost = dispatch => {
