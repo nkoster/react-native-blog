@@ -16,11 +16,11 @@ const IndexScreen = ({navigation}) => {
                             onPress={_ => navigation.navigate('ShowScreen', { id: item.id })}
                         >
                             <View style={styles.row}>
-                                <Text style={styles.title}>{item.title} - {item.id}</Text>
+                                <Text style={styles.title}>{item.title}</Text>
                                 <TouchableOpacity
                                     onPress={_ => delDronePost(item.id)}
                                 >
-                                    <Ionicons name='ios-trash' size={28} color='#666' />
+                                    <Ionicons style={styles.icon} name='ios-trash' size={28} color='#666' />
                                 </TouchableOpacity>
                             </View>
                         </TouchableOpacity>
@@ -47,15 +47,17 @@ const styles = {
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 8,
+        padding: 4,
         borderBottomWidth: 1,
-        borderColor: 'silver'
+        borderColor: 'silver',
+        marginTop: 7
     },
     icon: {
-        paddingRight: 10
+        marginRight: 7
     },
     title: {
-        fontSize: 18
+        fontSize: 18,
+        paddingLeft: 4
     }
 }
 
