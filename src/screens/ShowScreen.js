@@ -1,10 +1,11 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-const ShowScreen = _ => {
+const ShowScreen = ({navigation}) => {
+    const id = navigation.getParam('id')
     return (
         <View>
-            <Text>Show Screen</Text>
+            <Text>Show Screen {id}</Text>
         </View>
     )
 }
