@@ -7,7 +7,8 @@ const ShowScreen = ({navigation}) => {
     const dronePost = state.find(data => data.id === navigation.getParam('id'))
     return (
         <View>
-            <Text>Show Screen - {dronePost.title}</Text>
+            <Text>{dronePost.title}</Text>
+            <Text>{dronePost.content}</Text>
         </View>
     )
 }
