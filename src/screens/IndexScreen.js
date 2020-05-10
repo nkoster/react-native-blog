@@ -41,7 +41,7 @@ IndexScreen.navigationOptions = ({navigation}) => {
             <TouchableOpacity
                 onPress={_ => navigation.navigate('CreateScreen')}
             >
-                <Ionicons name='ios-add-circle' size={34} color='#696' />
+                <Ionicons style={styles.icon} name='ios-add-circle' size={34} color='#696' />
             </TouchableOpacity>
         )
     }
@@ -56,7 +56,7 @@ const styles = {
         borderColor: 'silver'
     },
     icon: {
-        marginVertical: 5
+        paddingRight: 10
     },
     title: {
         fontSize: 18
