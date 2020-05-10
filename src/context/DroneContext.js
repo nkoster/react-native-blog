@@ -5,7 +5,8 @@ const droneReducer = (state, action) => {
         case 'add_dronepost':
             return [...state, {
                 id: Math.floor(Math.random() * 99999),
-                title: `drone post ${state.length + 1}`
+                title: action.payload.title,
+                content: action.payload.content
             }]
         case 'del_dronepost':
             return state.filter(dronePost => dronePost.id !== action.payload)
@@ -15,7 +16,7 @@ const droneReducer = (state, action) => {
 }
 
 const addDronePost = dispatch => {
-    return _ => dispatch({ type: 'add_dronepost'})
+    return (title, content) => dispatch({ type: 'add_dronepost', payload: { title, content }})
 }
 
 const delDronePost = dispatch => {
