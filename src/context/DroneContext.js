@@ -22,7 +22,7 @@ const addDronePost = dispatch => {
             dispatch({ type: 'add_dronepost', payload: { title, content }})
             callback()
         } catch(err) {
-            console.log(err)
+            console.log('hey', err)
         }
     }
 }
@@ -34,5 +34,5 @@ const delDronePost = dispatch => {
 export const { Context, Provider } = createDataContext(
     droneReducer,
     { addDronePost, delDronePost },
-    []
+    [ { title: 'Master Post', content: 'http://drone-existence.com'} ]
 )
