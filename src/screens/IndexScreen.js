@@ -24,7 +24,7 @@ const IndexScreen = ({navigation}) => {
                                 <TouchableOpacity
                                     onPress={_ => delDronePost(item.id)}
                                 >
-                                    <Ionicons name="ios-trash" size={28} color='#666' />
+                                    <Ionicons name='ios-trash' size={28} color='#666' />
                                 </TouchableOpacity>
                             </View>
                         </TouchableOpacity>
@@ -33,6 +33,18 @@ const IndexScreen = ({navigation}) => {
             />
         </View>
     )
+}
+
+IndexScreen.navigationOptions = ({navigation}) => {
+    return {
+        headerRight: _ => (
+            <TouchableOpacity
+                onPress={_ => navigation.navigate('CreateScreen')}
+            >
+                <Ionicons name='ios-add-circle' size={34} color='#696' />
+            </TouchableOpacity>
+        )
+    }
 }
 
 const styles = {
@@ -44,7 +56,7 @@ const styles = {
         borderColor: 'silver'
     },
     icon: {
-        height: 10
+        marginVertical: 5
     },
     title: {
         fontSize: 18
