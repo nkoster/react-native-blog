@@ -14,7 +14,10 @@ const CreateScreen = ({navigation}) => {
             <TextInput style={styles.input} value={title} onChangeText={text => setTitle(text)} />
             <Text style={styles.label}>Content</Text>
             <TextInput style={styles.input} value={content} onChangeText={text => setContent(text)} />
-            <Button title='Add Drone Post' onPress={_ => addDronePost(title, content)} />
+            <Button
+                title='Add Drone Post'
+                onPress={_ => addDronePost(title, content, navigation.navigate('IndexScreen'))}
+            />
         </View>
     )
 }
