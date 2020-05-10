@@ -4,7 +4,7 @@ import { Context as DroneContext } from '../context/DroneContext'
 import { Ionicons } from '@expo/vector-icons'
 
 const IndexScreen = ({navigation}) => {
-    const { state, addDronePost, delDronePost } = useContext(DroneContext)
+    const { state, delDronePost } = useContext(DroneContext)
     return (
         <View>
             <FlatList
