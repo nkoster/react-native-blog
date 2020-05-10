@@ -7,10 +7,6 @@ const IndexScreen = ({navigation}) => {
     const { state, addDronePost, delDronePost } = useContext(DroneContext)
     return (
         <View>
-            <Button
-                title='add Drone post'
-                onPress={addDronePost}
-            />
             <FlatList
                 data={state}
                 keyExtractor={dronePost => String(dronePost.id)}
