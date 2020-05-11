@@ -34,5 +34,5 @@ const delDronePost = dispatch => {
 export const { Context, Provider } = createDataContext(
     droneReducer,
     { addDronePost, delDronePost },
-    [ { title: 'Master Post', content: 'http://drone-existence.com'} ]
+    [ { title: 'Master Post', content: 'http://drone-existence.com', id: 0} ]
 )
