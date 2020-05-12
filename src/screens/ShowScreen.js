@@ -17,7 +17,7 @@ const ShowScreen = ({navigation}) => {
 ShowScreen.navigationOptions = ({navigation}) => {
     return {
         headerRight: _ => (
-            <TouchableOpacity onPress={_ => navigation.navigate('EditScreen')} >
+            <TouchableOpacity onPress={_ => navigation.navigate('EditScreen', { id: navigation.getParam('id') } )} >
                 <MaterialIcons style={styles.icon} name='mode-edit' size={34} color='#696' />
             </TouchableOpacity>
         )
