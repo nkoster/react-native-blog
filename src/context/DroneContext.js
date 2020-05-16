@@ -10,6 +10,9 @@ const droneReducer = (state, action) => {
             }]
         case 'del_dronepost':
             return state.filter(dronePost => dronePost.id !== action.payload)
+        case 'edit_dronepost':
+            return state.map(dronePost => 
+                dronePost.id === action.payload.id ? action.payload : dronePost)
         default:
             return state
     }
@@ -31,8 +34,14 @@ const delDronePost = dispatch => {
     return id => dispatch({ type: 'del_dronepost', payload: id })
 }
 
+const editDronePost = dispatch => {
+    return (id, title, content) => {
+        dispatch({ type: 'edit_dronepost', payload: { id, title, content }})
+    }
+}
+
 export const { Context, Provider } = createDataContext(
     droneReducer,
-    { addDronePost, delDronePost },
+    { addDronePost, delDronePost, editDronePost },
     [ { title: 'Master Post', content: 'http://drone-existence.com', id: 0} ]
 )
