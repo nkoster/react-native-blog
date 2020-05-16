@@ -1,25 +1,18 @@
-import React, { useState, useContext } from 'react'
-import { Text, View, TextInput } from 'react-native'
+import React, { useContext } from 'react'
 import { Context } from '../context/DroneContext'
+import DronePostForm from '../components/DronePostForm'
 
 const EditScreen = ({navigation}) => {
-    const { state } = useContext(Context)
-    const dronePost = state.find(p => p.id === navigation.getParam('id'))
-    const [ title, setTitle ] = useState(dronePost.title)
-    const [ content, setContent] = useState(dronePost.content)
+    const id = navigation.getParam('id')
+    const { state, editDronePost } = useContext(Context)
+    const dronePost = state.find(p => p.id === id)
     return (
-        <View>
-            <Text>Edit Title ({title})</Text>
-            <TextInput
-                value={title}
-                onChangeText={setTitle}
-            />
-            <Text>Edit Content</Text>
-            <TextInput
-                value={content}
-                onChangeText={setContent}
-            />
-        </View>
+        <DronePostForm
+            onSubmit={(title, content) => {
+                editDronePost(id, title, content, navigation.navigate('IndexScreen'))
+            }}
+            initialValues={{ title: dronePost.title, content: dronePost.content }}
+        />
     )
 }
 
