@@ -3,12 +3,6 @@ import jsonServer from '../api/jsonServer'
 
 const droneReducer = (state, action) => {
     switch(action.type) {
-        case 'add_dronepost':
-            return [...state, {
-                id: Math.floor(Math.random() * 99999),
-                title: action.payload.title,
-                content: action.payload.content
-            }]
         case 'del_dronepost':
             return state.filter(dronePost => dronePost.id !== action.payload)
         case 'edit_dronepost':
@@ -28,16 +22,18 @@ const getDronePosts = dispatch => {
     }
 }
 
-const addDronePost = dispatch => {
+const addDronePost = _ => {
     return async (title, content, callback) => {
         await jsonServer.post('/droneposts', { title, content })
-        // dispatch({ type: 'add_dronepost', payload: { title, content }})
         callback ? callback() : null
     }
 }
 
 const delDronePost = dispatch => {
-    return id => dispatch({ type: 'del_dronepost', payload: id })
+    return async id => {
+        await jsonServer.delete(`/droneposts/${id}`)
+        dispatch({ type: 'del_dronepost', payload: id })
+    }
 }
 
 const editDronePost = dispatch => {
