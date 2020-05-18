@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Text, View, FlatList, Button, TouchableOpacity } from 'react-native'
 import { Context as DroneContext } from '../context/DroneContext'
 import { Ionicons } from '@expo/vector-icons'
 
 const IndexScreen = ({navigation}) => {
-    const { state, delDronePost } = useContext(DroneContext)
+    const { state, delDronePost, getDronePosts } = useContext(DroneContext)
+    useEffect(_ => { getDronePosts() }, [])
     return (
         <View>
             <FlatList
