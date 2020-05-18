@@ -1,4 +1,5 @@
 import createDataContext from './createDataContext'
+import jsonServer from '../api/jsonServer'
 
 const droneReducer = (state, action) => {
     switch(action.type) {
@@ -13,8 +14,17 @@ const droneReducer = (state, action) => {
         case 'edit_dronepost':
             return state.map(dronePost => 
                 dronePost.id === action.payload.id ? action.payload : dronePost)
+        case 'get_droneposts':
+            return action.payload
         default:
             return state
+    }
+}
+
+const getDronePosts = dispatch => {
+    return async _ => {
+        const reponse = await jsonServer.get('/droneposts')
+        dispatch({ type: 'get_droneposts', payload: reponse.data })
     }
 }
 
@@ -35,13 +45,14 @@ const delDronePost = dispatch => {
 }
 
 const editDronePost = dispatch => {
-    return (id, title, content) => {
+    return (id, title, content, callback) => {
         dispatch({ type: 'edit_dronepost', payload: { id, title, content }})
+        callback()
     }
 }
 
 export const { Context, Provider } = createDataContext(
     droneReducer,
-    { addDronePost, delDronePost, editDronePost },
-    [ { title: 'Master Post', content: 'http://drone-existence.com', id: 0} ]
+    { getDronePosts, addDronePost, delDronePost, editDronePost },
+    []
 )
