@@ -31,7 +31,7 @@ const getDronePosts = dispatch => {
 const addDronePost = dispatch => {
     return async (title, content, callback) => {
         await jsonServer.post('/droneposts', { title, content })
-        dispatch({ type: 'add_dronepost', payload: { title, content }})
+        // dispatch({ type: 'add_dronepost', payload: { title, content }})
         callback ? callback() : null
     }
 }
