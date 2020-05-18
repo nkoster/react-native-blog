@@ -37,9 +37,11 @@ const delDronePost = dispatch => {
 }
 
 const editDronePost = dispatch => {
-    return (id, title, content, callback) => {
+    return async (id, title, content) => {
+        await jsonServer.put(`/droneposts/${id}`, {
+            title, content
+        })
         dispatch({ type: 'edit_dronepost', payload: { id, title, content }})
-        callback()
     }
 }
 
