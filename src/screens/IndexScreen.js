@@ -5,7 +5,13 @@ import { Ionicons } from '@expo/vector-icons'
 
 const IndexScreen = ({navigation}) => {
     const { state, delDronePost, getDronePosts } = useContext(DroneContext)
-    useEffect(_ => { getDronePosts() }, [])
+    useEffect(_ => {
+        getDronePosts()
+        const listener = navigation.addListener('didFocus', _ => {
+            getDronePosts()
+        })
+        return _ => { listener.remove() } // subtile: function does not return!
+    }, [])
     return (
         <View>
             <FlatList
