@@ -30,13 +30,9 @@ const getDronePosts = dispatch => {
 
 const addDronePost = dispatch => {
     return async (title, content, callback) => {
-        try {
-            await console.log('slow monkey API') // this can be a slow API call
-            dispatch({ type: 'add_dronepost', payload: { title, content }})
-            callback()
-        } catch(err) {
-            console.log('hey', err)
-        }
+        await jsonServer.post('/droneposts', { title, content })
+        dispatch({ type: 'add_dronepost', payload: { title, content }})
+        callback ? callback() : null
     }
 }
 
