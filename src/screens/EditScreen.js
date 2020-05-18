@@ -9,7 +9,7 @@ const EditScreen = ({navigation}) => {
     return (
         <DronePostForm
             onSubmit={(title, content) => {
-                editDronePost(id, title, content, navigation.navigate('IndexScreen'))
+                editDronePost(id, title, content, navigation.pop())
             }}
             initialValues={{ title: dronePost.title, content: dronePost.content }}
         />
